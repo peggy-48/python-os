@@ -1,5 +1,5 @@
 import time
-import os
+import os, platform
 
 jls_extract_var = """
 ████████████████████████████████████
@@ -33,7 +33,12 @@ if setup == '1':
         f.writelines(pas)
     print("TESTOS Setup has been Completed!!!")
     time.sleep(1)
-    os.startfile('home.py')
+    if platform.system() == "Windows":
+     os.startfile('home.py')
+    elif platform.system() == "Linux":
+        os.system("xdg-open home.py")
+    elif "darwin" or "apple" in platform.system():
+        os.system("open home.py")
     exit()
 
 if setup == '2':
