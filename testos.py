@@ -34,11 +34,17 @@ if setup == '1':
     print("TESTOS Setup has been Completed!!!")
     time.sleep(1)
     if platform.system() == "Darwin":
-      os.system("open home.py")
+      try:
+          os.system("open -a Python home.py")
+      except:
+             if (y := input("Python interpret (d->default): ")) == "d":
+               pass
+             else:
+                  os.system(y+ " home.py")
     elif platform.system() == "Windows":
         os.startfile('home.py')
     elif platform.system() == "Linux":
-        os.system("xdg-open home.py")
+        os.system("python3 home.py")
     else:
          print("Host OS unsupported.")
     exit()
